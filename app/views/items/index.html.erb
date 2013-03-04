@@ -1,27 +1,6 @@
-<h1>Listing items</h1>
+<h1>Aveece</h1>
 
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Url</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-
-<% @items.each do |item| %>
-  <tr>
-    <td><%= item.title %></td>
-    <td><%= item.url %></td>
-    <td><%= link_to 'Show', item %></td>
-    <td><%= link_to 'Edit', edit_item_path(item) %></td>
-    <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Item', new_item_path %>
+<%= image_tag("1.jpeg", :class => "box") %>
+<%= image_tag("2.png", :class => "box") %>
+<%= image_tag("3.jpeg", :class => "box") %>
+<%= image_tag("4.jpg", :class => "box") %>
