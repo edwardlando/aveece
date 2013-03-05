@@ -1,6 +1,13 @@
-<h1>Aveece</h1>
+<div class="stream">
+  <%= image_tag("1.jpeg", :class => "box") %>
+  <%= image_tag("2.png", :class => "box") %>
+  <%= image_tag("3.jpeg", :class => "box") %>
+  <%= image_tag("4.jpg", :class => "box") %>
+</div>
 
-<%= image_tag("1.jpeg", :class => "box") %>
-<%= image_tag("2.png", :class => "box") %>
-<%= image_tag("3.jpeg", :class => "box") %>
-<%= image_tag("4.jpg", :class => "box") %>
+<div id="overlay">
+     <div>
+          <p>Content you want the user to see goes here.</p>
+          Click here to [<a href='#' onclick='overlay()'>close</a>]
+     </div>
+</div>
