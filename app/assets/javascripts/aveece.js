@@ -29,6 +29,7 @@ $(document).ready(function() {
 	function overlay() {
 		overlayed = !overlayed;
 	    if (overlayed == false) {
+	    	$("#overlay").attr({"class": "active"}); 
 	    	$("#overlay").show();
 	    } else {
 	    	$("#overlay").hide();

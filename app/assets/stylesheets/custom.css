@@ -22,3 +22,15 @@
      padding:15px;
      text-align:center;
 }
+
+
+#new_item .field, #new_item .actions {
+     margin-top: 0px;
+     margin-bottom: 0px;
+     border: none;
+}
+
+#modalItem {
+     width: 300px;
+     margin: 0;
+}
