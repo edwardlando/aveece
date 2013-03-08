@@ -1,12 +1,18 @@
+
+
 .stream {
 	width: 600px;
 	margin: 0 auto;
      background-color: lightblue;
+     border: 5px lightblue;
+     border-radius: 8px;
 }
 
 .box {
      width: 500px; /* We will not have a fixed width */
      margin: 0 auto;
+     margin-right: 50px;
+     margin-left: 50px;
 }
 
 #overlay {
