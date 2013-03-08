@@ -2,8 +2,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
 
-
-  # before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:index, :show]
   def index
     # for infinite scrolling
     @items = Item.order("name").page(params[:page]).per_page(10)

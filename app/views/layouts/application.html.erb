@@ -10,8 +10,18 @@
 <body>
 <div id="wrapper">
 	<%= render 'layouts/header' %>
-    <div id="container">
-	<%= yield %>
+
+  <!-- Devise messages -->
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+
+
+   
+
+
+  <div id="container">
+  	<%= yield %>
 	</div>
 </div>
 
