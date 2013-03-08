@@ -1,6 +1,12 @@
 .stream {
-	width: 1000px;
+	width: 600px;
 	margin: 0 auto;
+     background-color: lightblue;
+}
+
+.box {
+     width: 500px; /* We will not have a fixed width */
+     margin: 0 auto;
 }
 
 #overlay {
@@ -19,6 +25,7 @@
      margin: 100px auto;
      background-color: #fff;
      border:1px solid #000;
+     border-radius: 4px;
      padding:15px;
      text-align:center;
 }
@@ -31,6 +38,6 @@
 }
 
 #modalItem {
-     width: 300px;
+     width: 200px;
      margin: 0;
 }
