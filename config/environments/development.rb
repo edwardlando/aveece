@@ -37,4 +37,10 @@ Aveece::Application.configure do
   
   # Devise
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  TWITTER_CONSUMER_KEY = '21MISMggexG3eSETpZkwjQ'
+  TWITTER_CONSUMER_SECRET = 's6Bygl7wX0qEpdJ6e2lSsO4yyjpibTYWLBo6ySfnk8'
+
+  FACEBOOK_APP_ID = '556776341004235'
+  FACEBOOK_SECRET = '193103f2dba3718a1223e21af07fd1c0'
 end

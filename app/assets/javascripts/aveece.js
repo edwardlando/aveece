@@ -39,6 +39,28 @@ $(document).ready(function() {
 	    };
 	};
 
+	var signup_overlayed = false;
+	function signup_overlay() {
+			signup_overlayed = !signup_overlayed;
+	    if (signup_overlayed == true) {
+	    	$("#signup_overlay").attr({"class": "active"}); 
+	    	$("#signup_overlay").show();
+	    } else {
+	    	$("#signup_overlay").hide();
+	    };
+	};
+
+	var login_overlayed = false;
+	function login_overlay() {
+			login_overlayed = !login_overlayed;
+	    if (login_overlayed == true) {
+	    	$("#login_overlay").attr({"class": "active"}); 
+	    	$("#login_overlay").show();
+	    } else {
+	    	$("#login_overlay").hide();
+	    };
+	};
+
 //	$("#add").on("click", function(event) {
 	//	overlay();
 	//});
@@ -48,11 +70,25 @@ $(document).ready(function() {
 		var id = e.target.id;
 		if ($(target).is('#add'))
 			overlay();
+		else if ($(target).is('#signup'))
+			signup_overlay();
+		else if ($(target).is('#login'))
+			login_overlay();
 		else if (($(target).is("#overlay"))) {
 		//	if (!($(target).is("#add")))
 				if (overlayed) 
 					overlay();
-			}
+		}
+		else if (($(target).is("#signup_overlay"))) {
+		//	if (!($(target).is("#add")))
+				if (signup_overlayed) 
+					signup_overlay();
+		}
+		else if (($(target).is("#login_overlay"))) {
+		//	if (!($(target).is("#add")))
+				if (login_overlayed) 
+					login_overlay();
+		}
 	});
 
 

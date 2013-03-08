@@ -11,17 +11,23 @@
 <div id="wrapper">
 	<%= render 'layouts/header' %>
 
-  <!-- Devise messages -->
+  <!-- Devise messages 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-
-
-
-   
+  -->
 
 
   <div id="container">
   	<%= yield %>
+    <div id="overlay">
+         <div><%= render "items/modal_form" %></div>
+    </div>
+    <div id="signup_overlay">
+         <div><%= render "devise/registrations/new" %></div>
+    </div>
+    <div id="login_overlay">
+         <div><%= render "devise/sessions/new" %></div>
+    </div>
 	</div>
 </div>
 

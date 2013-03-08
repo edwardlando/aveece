@@ -34,6 +34,9 @@ gem 'will_paginate'
 
 gem 'devise'
 
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

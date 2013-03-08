@@ -15,7 +15,7 @@
      margin-left: 50px;
 }
 
-#overlay {
+#overlay, #signup_overlay, #login_overlay {
      display: none;
      position: absolute;
      left: 0px;
@@ -46,4 +46,8 @@
 #modalItem {
      width: 200px;
      margin: 0;
+}
+
+a:hover {
+     background-color: transparent !important;
 }
