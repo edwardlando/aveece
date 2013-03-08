@@ -13,34 +13,25 @@ $(document).ready(function() {
 		'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")} 
 	});
 
-    // Masonry for images
-	var $container = $('#container');
 
-	$container.imagesLoaded(function(){
-	  $container.masonry({
-	    itemSelector : '.box'
-	  });
-	});
-   
 
     // Infinite scroll 
     var $container = $('#container');
-	$container.infinitescroll({
-	    // infinite scroll options...
-	  },
 	  // trigger Masonry as a callback
-	  function( newElements ) {
+/*	  function( newElements ) {
 	    var $newElems = $( newElements ); // need to get the new elements with a GET request
-	    $container.masonry( 'appended', $newElems );
-	  }
-	);
+	  //  $container.masonry({'appended', $newElems });
+	    $container.imagesLoaded(function(){ 
+	    $container.masonry({ itemSelector : '.box' });
 
+	  });
+	  }; */
 
 	// Modals
-	var overlayed = true;
+	var overlayed = false;
 	function overlay() {
-		overlayed = !overlayed;
-	    if (overlayed == false) {
+			overlayed = !overlayed;
+	    if (overlayed == true) {
 	    	$("#overlay").attr({"class": "active"}); 
 	    	$("#overlay").show();
 	    } else {
@@ -48,12 +39,20 @@ $(document).ready(function() {
 	    };
 	};
 
-	$("#add").on("click", function(event) {
-		overlay();
-	});
+//	$("#add").on("click", function(event) {
+	//	overlay();
+	//});
 
-	$("#closeOverlay").on("click", function(event) {
-		overlay();
+	$(document).click(function(e){
+		var target = (e.target);
+		var id = e.target.id;
+		if ($(target).is('#add'))
+			overlay();
+		else if (($(target).is("#overlay"))) {
+		//	if (!($(target).is("#add")))
+				if (overlayed) 
+					overlay();
+			}
 	});
 
 
