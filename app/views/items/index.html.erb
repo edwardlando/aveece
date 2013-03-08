@@ -5,6 +5,14 @@
   <%= image_tag("4.jpg", :class => "box") %>
 </div>
 
+<!--
+<div class="stream">
+   render @items
+</div>
+-->
+
+<%= will_paginate @items %>
+
 <div id="overlay">
      <div>
           <%= render "items/modal_form" %>

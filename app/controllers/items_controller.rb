@@ -5,7 +5,9 @@ class ItemsController < ApplicationController
 
   # before_filter :authenticate_user!
   def index
-    @items = Item.all
+    # for infinite scrolling
+    @items = Item.order("name").page(params[:page]).per_page(10)
+
     @url = "http://www.ralphlauren.com/family/index.jsp?categoryId=4218845&cp=1760781&ab=ln_men_cs1_jeans"
 
     #@item_images = getAllImages(@url)
