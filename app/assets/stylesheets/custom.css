@@ -1,3 +1,7 @@
+body, p, ol, ul, input {
+     font-family: 'Source Sans Pro', sans-serif !important;
+     font-family: "proxima-nova","Helvetica-neue",helvetica,sans-serif;
+}
 
 
 .stream {
