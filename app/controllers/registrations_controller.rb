@@ -11,18 +11,8 @@ class RegistrationsController < Devise::RegistrationsController
 	def create
 		super
         
-=begin
-		    @channel = Channel.new(:gender => "All",
-							       :price => "All",
-							       :vibe => "All",
-							       :apparel => "All",
-							       :user_id => resource.id,
-							       :item_index => 0)
-
-		    @channel.current_channel = true
-		    @channel.save
-=end
-
+        # make a channel for the user
+        
 	    resource.role = "standard"
 	    #resource.wishlist = Wishlist.new(:user_id => resource.id)
 	    cookies[:aveece_user_id] = resource.id 
