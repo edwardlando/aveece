@@ -58,7 +58,7 @@ $(document).ready(function() {
 
 		  //  	$("#img2").attr("src",obj[1]);
 		   // 	$("#img3").attr("src",obj[2]);
-		   		$("input").attr("visibility","visible");
+		 
 		    	$("img").attr("visibility","visible");
 
 		    	image = obj[0];
@@ -83,6 +83,7 @@ $(document).ready(function() {
 
 		        request.always(function(){
 		        	overlay();
+		        	$("#img1").attr("src","");
 		        });
 
 		       });

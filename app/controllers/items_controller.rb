@@ -99,7 +99,7 @@ class ItemsController < ApplicationController
       puts images.to_s
       links = images.map {|i| i['src']}
       links = links[0..2]
-      titles = titles[0..2]
+      titles = titles[0..2].map{ |t| t.to_s.split(">")[1].split("<")[0]}
       puts links.to_s
       render :json => links
       if params[:image]
@@ -107,7 +107,7 @@ class ItemsController < ApplicationController
         puts ("url is " + params[:url])
         puts ("image is " + params[:image])
         @item = Item.new
-        @item.title = titles[0]
+        @item.title = titles[0].to_s
         @item.url = params[:url]
         @item.image = params[:image]
         @item.genes = ''
