@@ -121,7 +121,7 @@ $(document).ready(function() {
 	};
 
 	var item_overlayed = false;
-	function items_overlay() {
+	function item_overlay() {
 			item_overlayed = !item_overlayed;
 	    if (item_overlayed == true) {
 	    	$("#item_overlay").attr({"class": "active"}); 
