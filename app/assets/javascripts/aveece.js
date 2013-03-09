@@ -120,16 +120,58 @@ $(document).ready(function() {
 	    };
 	};
 
+
+    // Item modal
+
+    function fillModalPage() {
+
+    }
+    
+    var database_item;
+    function getItemFromSrc(src) {
+		var data = {
+			"src": src
+		};
+		$.ajax({
+			type: 'GET',
+			url: "/items/index.json",
+			data: data,
+			dataType: "json",
+			success: function(data) {
+				database_item = data;
+				fillModalPage();
+				alert(database_item);
+			}
+		});
+	}
+
+
+    var item; // keep track of the item clicked
+    var item_src;
 	var item_overlayed = false;
 	function item_overlay() {
 			item_overlayed = !item_overlayed;
 	    if (item_overlayed == true) {
 	    	$("#item_overlay").attr({"class": "active"}); 
+            item_src = item.src;
+            getItemFromSrc(item_src); // query to the database
+
+
 	    	$("#item_overlay").show();
 	    } else {
 	    	$("#item_overlay").hide();
 	    };
 	};
+    
+   
+
+
+
+
+
+
+
+
 
 //	$("#add").on("click", function(event) {
 	//	overlay();
@@ -140,8 +182,10 @@ $(document).ready(function() {
 		var id = e.target.id;
 		if ($(target).is('#add'))
 			overlay();
-	    else if ($(target).is('.box'))
+	    else if ($(target).is('.box')) {
+	    	item = target;
 	    	item_overlay();
+	    }
 		else if (($(target).is("#overlay"))) {
 		//	if (!($(target).is("#add")))
 				if (overlayed) 

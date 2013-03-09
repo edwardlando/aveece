@@ -8,11 +8,15 @@ class ItemsController < ApplicationController
 
     @url = "http://www.ralphlauren.com/family/index.jsp?categoryId=4218845&cp=1760781&ab=ln_men_cs1_jeans"
 
+    if params["src"]
+      @queried_item = Item.find_by_url(params["src"])
+    end
+
     #@item_images = getAllImages(@url)
     
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @items }
+      format.json { render json: @queried_item }
     end
   end
 
