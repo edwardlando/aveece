@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
    # @items = Item.order("title").page(params[:page]).per_page(10)
 
     @url = "http://www.ralphlauren.com/family/index.jsp?categoryId=4218845&cp=1760781&ab=ln_men_cs1_jeans"
-
+    @item_images = Item.all.map {|img| img.image}
     #@item_images = getAllImages(@url)
     
     respond_to do |format|
@@ -102,7 +102,7 @@ class ItemsController < ApplicationController
       titles = titles[0..2].map{ |t| t.to_s.split(">")[1].split("<")[0]}
       puts links.to_s
       render :json => links
-      if params[:image]
+      if params[:image] && params[:image] != ''
         puts ("title is " + titles[0])
         puts ("url is " + params[:url])
         puts ("image is " + params[:image])
