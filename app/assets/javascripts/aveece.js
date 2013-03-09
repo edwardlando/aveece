@@ -123,7 +123,7 @@ $(document).ready(function() {
 
     // Item modal
 
-    function fillModalPage() {
+    function fillModalPage() { // populates the page with the item info
 
     }
     
@@ -134,13 +134,13 @@ $(document).ready(function() {
 		};
 		$.ajax({
 			type: 'GET',
-			url: "/items/index.json",
+			url: "/items.json",
 			data: data,
 			dataType: "json",
 			success: function(data) {
 				database_item = data;
-				fillModalPage();
-				alert(database_item);
+				//fillModalPage();
+				alert(database_item.url);
 			}
 		});
 	}
