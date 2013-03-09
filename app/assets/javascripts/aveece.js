@@ -120,6 +120,17 @@ $(document).ready(function() {
 	    };
 	};
 
+	var item_overlayed = false;
+	function items_overlay() {
+			item_overlayed = !item_overlayed;
+	    if (item_overlayed == true) {
+	    	$("#item_overlay").attr({"class": "active"}); 
+	    	$("#item_overlay").show();
+	    } else {
+	    	$("#item_overlay").hide();
+	    };
+	};
+
 //	$("#add").on("click", function(event) {
 	//	overlay();
 	//});
@@ -129,10 +140,17 @@ $(document).ready(function() {
 		var id = e.target.id;
 		if ($(target).is('#add'))
 			overlay();
+	    else if ($(target).is('.box'))
+	    	item_overlay();
 		else if (($(target).is("#overlay"))) {
 		//	if (!($(target).is("#add")))
 				if (overlayed) 
 					overlay();
+		}
+		else if (($(target).is("#item_overlay"))) {
+		//	if (!($(target).is("#add")))
+				if (item_overlayed) 
+					item_overlay();
 		}
 	});
 

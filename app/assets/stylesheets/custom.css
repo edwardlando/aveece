@@ -25,7 +25,7 @@ html, body {
      margin-top: 15px;
 }
 
-#overlay, #signup_overlay, #login_overlay {
+#overlay, #item_overlay {
      display: none;
      position: absolute;
      left: 0px;
