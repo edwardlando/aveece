@@ -37,7 +37,6 @@ $(document).ready(function() {
 		$("#url_submit").click(function(){
 
 				var url_text = $("#url_text").val();
-				alert(url_text);
 		    // abort any pending request
 		    if (request) {
 		        request.abort();
@@ -75,7 +74,7 @@ $(document).ready(function() {
 		        });
 
 		        request.done(function(response,textStatus,jqXHR){
-		        	alert("Great work. Item added");
+		     //   	alert("Great work. Item added! ;)");
 		        });
 
 		        request.fail(function(jqXHR,textStatus,errorThrown){

@@ -1,11 +1,10 @@
 class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
-
   before_filter :authenticate_user!, except: [:index, :show,:create_item]
   def index
     # for infinite scrolling
-    @items = Item.order("name").page(params[:page]).per_page(10)
+   # @items = Item.order("title").page(params[:page]).per_page(10)
 
     @url = "http://www.ralphlauren.com/family/index.jsp?categoryId=4218845&cp=1760781&ab=ln_men_cs1_jeans"
 
@@ -16,6 +15,8 @@ class ItemsController < ApplicationController
       format.json { render json: @items }
     end
   end
+
+
 
   # GET /items/1
   # GET /items/1.json
@@ -88,26 +89,33 @@ class ItemsController < ApplicationController
     end
   end
 
+
+
   def create_item
     if params[:url]
-      puts params[:url]
       page = Nokogiri::HTML(open(params[:url]))
       images = page.css('div.container img')
+      titles = page.css('figcaption')
       puts images.to_s
       links = images.map {|i| i['src']}
-  #    links.delete_if {|l| l.to_s[-3..-1] != 'jpg'}
-      links = links[0..3]
+      links = links[0..2]
+      titles = titles[0..2]
       puts links.to_s
       render :json => links
       if params[:image]
+        puts ("title is " + titles[0])
+        puts ("url is " + params[:url])
+        puts ("image is " + params[:image])
         @item = Item.new
+        @item.title = titles[0]
         @item.url = params[:url]
         @item.image = params[:image]
-        @item.price = params[:price]
+        @item.genes = ''
+        @item.views = 0
+        @item.votes = 0
+        puts "item is nil!" if @item.nil?
         @item.save
       end
-    else
-      puts "no dice"
     end
   end
 end

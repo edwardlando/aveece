@@ -10,6 +10,26 @@
   <%= @item.url %>
 </p>
 
+<p>
+  <b>Image:</b>
+  <%= @item.image %>
+</p>
+
+<p>
+  <b>Genes:</b>
+  <%= @item.genes %>
+</p>
+
+<p>
+  <b>Votes:</b>
+  <%= @item.votes %>
+</p>
+
+<p>
+  <b>Views:</b>
+  <%= @item.views %>
+</p>
+
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>

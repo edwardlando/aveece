@@ -1,8 +1,5 @@
 class Item < ActiveRecord::Base
-	attr_accessible :title, :url, :image, :description
-    
+  attr_accessible :genes, :image, :title, :url, :views, :votes
 
-
-
-
+ 
 end
