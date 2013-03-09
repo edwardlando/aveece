@@ -1,11 +1,13 @@
 Aveece::Application.routes.draw do
-  devise_for :users
 
   resources :items
 
   devise_for :users, :controllers => { :registrations => "registrations",
   :omniauth_callbacks => "users/omniauth_callbacks", :sessions => "sessions" } 
  
+  devise_for :users
+
+
   match '/create_item' => 'items#create_item'
 
   # The priority is based upon order of creation:
