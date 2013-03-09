@@ -6,13 +6,17 @@ class ItemsController < ApplicationController
     # for infinite scrolling
    # @items = Item.order("title").page(params[:page]).per_page(10)
 
-    @url = "http://www.ralphlauren.com/family/index.jsp?categoryId=4218845&cp=1760781&ab=ln_men_cs1_jeans"
+
     @item_images = Item.all.map {|img| img.image}
-    #@item_images = getAllImages(@url)
+
+    if params["src"]
+      @queried_item = Item.find_by_url(params["src"])
+    end
+
     
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @items }
+      format.json { render json: @queried_item }
     end
   end
 

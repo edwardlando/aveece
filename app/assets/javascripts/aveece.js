@@ -120,19 +120,67 @@ $(document).ready(function() {
 	    };
 	};
 
-//	$("#add").on("click", function(event) {
-	//	overlay();
-	//});
 
+    // Item modal
+
+    function fillModalPage() { // populates the page with the item info
+
+    }
+    
+    var database_item;
+    function getItemFromSrc(src) {
+		var data = {
+			"src": src
+		};
+		$.ajax({
+			type: 'GET',
+			url: "/items.json",
+			data: data,
+			dataType: "json",
+			success: function(data) {
+				database_item = data;
+				//fillModalPage();
+				alert(database_item.url);
+			}
+		});
+	}
+
+
+    var item; // keep track of the item clicked
+    var item_src;
+	var item_overlayed = false;
+	function item_overlay() {
+			item_overlayed = !item_overlayed;
+	    if (item_overlayed == true) {
+	    	$("#item_overlay").attr({"class": "active"}); 
+            item_src = item.src;
+            getItemFromSrc(item_src); // query to the database
+
+	    	$("#item_overlay").show();
+	    } else {
+	    	$("#item_overlay").hide();
+	    };
+	};
+    
+  
 	$(document).click(function(e){
 		var target = (e.target);
 		var id = e.target.id;
 		if ($(target).is('#add'))
 			overlay();
+	    else if ($(target).is('.box')) {
+	    	item = target;
+	    	item_overlay();
+	    }
 		else if (($(target).is("#overlay"))) {
 		//	if (!($(target).is("#add")))
 				if (overlayed) 
 					overlay();
+		}
+		else if (($(target).is("#item_overlay"))) {
+		//	if (!($(target).is("#add")))
+				if (item_overlayed) 
+					item_overlay();
 		}
 	});
 
