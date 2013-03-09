@@ -27,6 +27,51 @@ $(document).ready(function() {
 	  });
 	  }; */
 
+
+
+		// variable to hold request
+		var request;
+		// bind to the submit event of our form
+		$("#url_submit").click(function(event){
+
+				url_text = $("#url_text").val();
+				alert(url_text);
+		    // abort any pending request
+		    if (request) {
+		        request.abort();
+		    }
+
+		    // fire off the request to /form.php
+		    var request = $.ajax({
+		        url: "/create_item",
+		        type: "post",
+		        data: "url="+url_text
+		    });
+
+		    // callback handler that will be called on success
+		    request.done(function (response, textStatus, jqXHR){
+		        // log a message to the console
+		        alert("Hooray, it worked!");
+		    });
+
+		    // callback handler that will be called on failure
+		    request.fail(function (jqXHR, textStatus, errorThrown){
+		        // log the error to the console
+		        alert("no, bitch. fucking sign in already");
+		    });
+
+		    // callback handler that will be called regardless
+		    // if the request failed or succeeded
+		    request.always(function () {
+		        // reenable the inputs
+		        overlay();
+		    });
+
+		    // prevent default posting of form
+		    event.preventDefault();
+		});
+
+
 	// Modals
 	var overlayed = false;
 	function overlay() {
