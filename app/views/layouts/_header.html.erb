@@ -1,46 +1,62 @@
 <div class="navbar">
   <div class="navbar-inner">
   	<%= link_to image_tag("logo.png"), root_path, :class => "brand", :id => "logo" %>
-    <ul class="nav pull-left">
-      <!--<li class="active"><a href="#">Link</a></li>-->
-      <!-- Adding to Aveece -->
-      <li><a href="#" id="add">Add to Aveece</a></li>
 
-    </ul>
-    <ul class="nav pull-right">
+    <!-- User signed in -->
+  	<% if user_signed_in? %>
+	    <ul class="nav pull-left">
+	      <!--<li class="active"><a href="#">Link</a></li>-->
+	      <!-- Adding to Aveece -->
+	      <li><a href="#" id="add">Add to Aveece</a></li>
 
-      <!-- Authentification -->
-      <% if user_signed_in? %>
-	      <li><%= link_to 'My profile', edit_user_registration_path %></li>
+	    </ul>
+	    <ul class="nav pull-right">
+
+	      <!-- Authentification -->
+		      <li><%= link_to 'My profile', edit_user_registration_path %></li>
+		 
+			  <li><a href="#" id="signup">Sign up!</a></li>
+			   <li><a href="#" id="login">Login</a></li>
+	      
+	      
+	      <!-- "More" dropdown -->
+	      <li class="dropdown">
+		    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		      More
+		      <b class="caret"></b>
+		    </a>
+			    <ul class="dropdown-menu">
+			      <li><a href="#">Link</a></li>
+			      <li><a href="#">Link</a></li>
+			      <li>
+	                <% if user_signed_in? %>
+				      	<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+			      	<% end %>
+			      </li>
+			      
+			    </ul>
+		  </li>
+
+		  <!-- Search bar -->
+	      <li><form class="navbar-search pull-left">
+				  <input type="text" class="search-query" placeholder="Search">
+			  </form>
+		  </li>
+
+      <!-- New user -->		  
 	  <% else %>
-		  <li><a href="#" id="signup">Sign up!</a></li>
-		   <li><a href="#" id="login">Login</a></li>
-      <% end %>
-      
-      <!-- "More" dropdown -->
-      <li class="dropdown">
-	    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	      More
-	      <b class="caret"></b>
-	    </a>
-		    <ul class="dropdown-menu">
-		      <li><a href="#">Link</a></li>
-		      <li><a href="#">Link</a></li>
-		      <li>
-                <% if user_signed_in? %>
-			      	<%= link_to "Logout", destroy_user_session_path, method: :delete %>
-		      	<% end %>
-		      </li>
-		      
-		    </ul>
-	  </li>
-
-	  <!-- Search bar -->
-      <li><form class="navbar-search pull-left">
-			  <input type="text" class="search-query" placeholder="Search">
-		  </form>
-	  </li>
-
+	    <ul class="nav pull-right">
+			<li class="oauth">
+			     <%= link_to "Sign in", user_omniauth_authorize_path(:facebook), :id => "facebook_signup" %>
+			</li>
+		</ul>
     </ul>
   </div>
+  <div class="oauth" id="signup">
+	  <div id="signup_button_div">
+	  	<%= button_to "Sign up with Facebook", user_omniauth_authorize_path(:facebook), :id => "facebook_signup", :class => "btn btn-large btn-primary" %>
+	  </div>
+	  	<h1 id="tagline">We learn what you like and give it to you.</h1>
+  </div>
+  <% end %>
 </div>
