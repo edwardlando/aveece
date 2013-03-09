@@ -156,27 +156,13 @@ $(document).ready(function() {
             item_src = item.src;
             getItemFromSrc(item_src); // query to the database
 
-
 	    	$("#item_overlay").show();
 	    } else {
 	    	$("#item_overlay").hide();
 	    };
 	};
     
-   
-
-
-
-
-
-
-
-
-
-//	$("#add").on("click", function(event) {
-	//	overlay();
-	//});
-
+  
 	$(document).click(function(e){
 		var target = (e.target);
 		var id = e.target.id;
