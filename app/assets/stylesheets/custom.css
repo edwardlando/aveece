@@ -1,3 +1,7 @@
+body, p, ol, ul, input {
+     font-family: 'Source Sans Pro', sans-serif !important;
+     font-family: "proxima-nova","Helvetica-neue",helvetica,sans-serif;
+}
 
 
 .stream {
@@ -56,4 +60,23 @@ a:hover {
      width: 100px;
      height: 20px;
      padding-top: 3px;
+}
+
+#facebook_signup {
+     font-size: 18px;
+}
+
+#signup {
+     width: 100%;
+     height: 150px;
+     background-color: lightpink;
+}
+
+#signup_button_div {
+     width: 200px;
+     margin: 0 auto;
+}
+
+#tagline {
+     text-align: center;
 }
