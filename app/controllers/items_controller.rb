@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
 
-  before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :authenticate_user!, except: [:index, :show,:create_item]
   def index
     # for infinite scrolling
     @items = Item.order("name").page(params[:page]).per_page(10)
@@ -85,6 +85,23 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to items_url }
       format.json { head :no_content }
+    end
+  end
+
+  def create_item
+    if request.post? 
+      if params[:url]
+        puts params[:url]
+        page = Nokogiri::HTML(open(params[:url]))
+        images = page.css('div.container img')
+        puts images.to_s
+        links = images.map {|i| i['src']}
+        links.delete_if {|l| l.to_s[-3..-1] != 'jpg'}
+        links = links[0..3]
+        puts links.to_s
+      else
+        puts "no dice"
+      end
     end
   end
 end
