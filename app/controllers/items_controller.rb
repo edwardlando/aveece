@@ -89,19 +89,25 @@ class ItemsController < ApplicationController
   end
 
   def create_item
-    if request.post? 
-      if params[:url]
-        puts params[:url]
-        page = Nokogiri::HTML(open(params[:url]))
-        images = page.css('div.container img')
-        puts images.to_s
-        links = images.map {|i| i['src']}
-        links.delete_if {|l| l.to_s[-3..-1] != 'jpg'}
-        links = links[0..3]
-        puts links.to_s
-      else
-        puts "no dice"
+    if params[:url]
+      puts params[:url]
+      page = Nokogiri::HTML(open(params[:url]))
+      images = page.css('div.container img')
+      puts images.to_s
+      links = images.map {|i| i['src']}
+  #    links.delete_if {|l| l.to_s[-3..-1] != 'jpg'}
+      links = links[0..3]
+      puts links.to_s
+      render :json => links
+      if params[:image]
+        @item = Item.new
+        @item.url = params[:url]
+        @item.image = params[:image]
+        @item.price = params[:price]
+        @item.save
       end
+    else
+      puts "no dice"
     end
   end
 end

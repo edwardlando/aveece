@@ -31,10 +31,12 @@ $(document).ready(function() {
 
 		// variable to hold request
 		var request;
+		var image;
+		var form_price;
 		// bind to the submit event of our form
-		$("#url_submit").click(function(event){
+		$("#url_submit").click(function(){
 
-				url_text = $("#url_text").val();
+				var url_text = $("#url_text").val();
 				alert(url_text);
 		    // abort any pending request
 		    if (request) {
@@ -44,27 +46,61 @@ $(document).ready(function() {
 		    // fire off the request to /form.php
 		    var request = $.ajax({
 		        url: "/create_item",
-		        type: "post",
+		        type: "get",
 		        data: "url="+url_text
 		    });
 
 		    // callback handler that will be called on success
 		    request.done(function (response, textStatus, jqXHR){
-		        // log a message to the console
-		        alert("Hooray, it worked!");
+
+//		    	alert(response);
+		    	obj = response;
+		    	$("#img1").attr("src",obj[0]);
+
+		  //  	$("#img2").attr("src",obj[1]);
+		   // 	$("#img3").attr("src",obj[2]);
+		   		$("input").attr("visibility","visible");
+		    	$("img").attr("visibility","visible");
+
+		    	image = obj[0];
+
+		    	$("#url_submit").click(function(){
+		    	
+		    		form_price = $("#price").val();
+		        
+		        request = $.ajax({
+		        	url: '/create_item',
+		        	type: 'get',
+		        	data: 'url='+url_text+'&image='+image+'&price='+form_price
+		        });
+
+		        request.done(function(response,textStatus,jqXHR){
+		        	alert("Great work. Item added");
+		        });
+
+		        request.fail(function(jqXHR,textStatus,errorThrown){
+		        	alert("Uh-oh! Something went wrong, and we're looking into it :(");
+		        });
+
+		        request.always(function(){
+		        	overlay();
+		        });
+
+		       });
+
 		    });
 
 		    // callback handler that will be called on failure
 		    request.fail(function (jqXHR, textStatus, errorThrown){
 		        // log the error to the console
-		        alert("no, bitch. fucking sign in already");
+		        alert("no, bitch. Either wrong url or fucking sign in already");
 		    });
 
 		    // callback handler that will be called regardless
 		    // if the request failed or succeeded
 		    request.always(function () {
 		        // reenable the inputs
-		        overlay();
+		//        overlay();
 		    });
 
 		    // prevent default posting of form
