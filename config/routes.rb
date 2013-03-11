@@ -7,8 +7,9 @@ Aveece::Application.routes.draw do
  
   devise_for :users
 
-
   match '/create_item' => 'items#create_item'
+
+  get "users/show"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

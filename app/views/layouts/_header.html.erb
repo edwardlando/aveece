@@ -13,7 +13,8 @@
 	    <ul class="nav pull-right">
 
 	      <!-- Authentification -->
-		      <li><%= link_to 'My profile', edit_user_registration_path %></li>
+		  <li><%= link_to 'My profile', :controller => "users", :action => "show", :id => current_user.id %> </li>
+		      <!--<li> link_to 'My profile', edit_user_registration_path </li>-->
 		 
 	      <!-- "More" dropdown -->
 	      <li class="dropdown">
