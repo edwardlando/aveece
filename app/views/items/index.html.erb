@@ -1,12 +1,12 @@
 <div class="stream">
-    <%= @item_images.each do |img| %>
-        <%= image_tag(img, :alt => "stream") %>
+    <%= @items.each do |i| %>
+    	<div class="item">
+    		<a href='/items/<%=i.id.to_s %>' >
+    			<img src= <%= i.image %> >
+    		</a>
+    		<h3>
+    			<%= i.title %>
+    		</h3>
+    	</div>
     <% end %>
 </div>
-
-<!--
-<div class="stream">
-   render @items
-</div>
--->
-

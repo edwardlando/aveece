@@ -7,16 +7,16 @@ class ItemsController < ApplicationController
    # @items = Item.order("title").page(params[:page]).per_page(10)
 
 
-    @item_images = Item.all.map {|img| img.image}
+    @items = Item.all#.map {|img| img.image}
 
-    if params["src"]
-      @queried_item = Item.find_by_url(params["src"])
-    end
+   # if params["src"]
+   #   @queried_item = Item.find_by_url(params["src"])
+   # end
 
     
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @queried_item }
+    #  format.json { render json: @queried_item }
     end
   end
 
@@ -96,7 +96,7 @@ class ItemsController < ApplicationController
 
 
   def create_item
-    if params[:url]
+    if params[:url] && Item.find_by_url(params[:url]).nil?
       page = Nokogiri::HTML(open(params[:url]))
       images = page.css('div.container img')
       titles = page.css('figcaption')
@@ -117,7 +117,6 @@ class ItemsController < ApplicationController
         @item.genes = ''
         @item.views = 0
         @item.votes = 0
-        puts "item is nil!" if @item.nil?
         @item.save
       end
     end
